@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html
+ lang="en"
+ th:replace="~{base :: parent(~{::#content},~{::title},~{::script})}"
+ >
+<head>
+<meta charset="UTF-8">
+<title data-th-text="${loggedInUser.name}+' | SCM'">Profile Page</title>
+</head>
+<body>
+
+<div id="content">
+
+<!-- sidebar -->
+
+<!-- user is logged in : sidebar -->
+  <div th-if="${loggedInUser}">
+    <div data-th-replace="~{user/sidebar :: sidebar}"></div>
+  </div>
+
+  <div  class="sm:pl-64 pt-20" style="height: 1000px">
+   <div class="flex justify-center flex-col md:pt-32 items-center">
+    
+    <!-- profile Card -->
+       
+
+<div class="w-full max-w-2xl bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
+    <div class="flex justify-end px-4 pt-4 text-gray-400">
+        
+            <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 3">
+                <path d="M2 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm6.041 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM14 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Z"/>
+            </svg>
+        
+        
+       
+    </div>
+    <div class="flex flex-col items-center pb-10">
+    
+        <img onerror="this.onerror=null; this.src='/images/contact.jpg'" data-th-src="@{${loggedInUser.profilePic}}" class="w-32 h-32 mb-3 rounded-full shadow" src="/docs/images/people/profile-picture-3.jpg" alt="Bonnie image"/>
+        <h5 data-th-text="${loggedInUser.name}" class="mb-1 text-xl font-semibold text-gray-900 dark:text-white">Bonnie Green</h5>
+        <span data-th-text="${loggedInUser.email}" class=" mb-1 text-sm text-gray-500 dark:text-gray-400">Visual Designer</span>
+        <span data-th-text="${loggedInUser.about}" class="mb-1 text-sm text-gray-500 dark:text-gray-400">about</span>
+        <div class="w-full flex justify-between">
+            
+              <p class="flex text-gray-500  ms-1">Email Verified: 
+              
+             <span data-th-text="${loggedInUser.emailVerified ? 'Yes' : 'No'}" class="text-base font-normal leading-tight text-gray-500 dark:text-gray-400 ms-3">No</span>
+             
+                 <svg th:unless="${loggedInUser.emailVerified}" class="ms-2 shrink-0 w-5 h-5 text-gray-400 dark:text-gray-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"/>
+                 </svg>
+             
+             <svg th:if="${loggedInUser.emailVerified}" class=" ms-2 shrink-0 w-5 h-5 text-blue-700 dark:text-blue-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"/>
+              </svg>
+            </p>
+            
+              <p class="flex text-gray-500 ms-3">Phone Verified:
+             
+              <span data-th-text="${loggedInUser.phoneVerified ? 'Yes' : 'No'}" class="text-base font-normal leading-tight text-gray-500 dark:text-gray-400 ms-3">No</span>
+              
+                 <svg th:unless="${loggedInUser.phoneVerified}" class="ms-2 shrink-0 w-5 h-5 text-gray-400 dark:text-gray-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"/>
+                 </svg>
+              
+               <svg th:if="${loggedInUser.phoneVerified}"  class="ms-2 shrink-0 w-5 h-5 text-blue-700 dark:text-blue-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"/>
+              </svg>
+             </p>
+           
+        </div>
+    </div>
+</div>
+       
+    
+    
+   </div>
+  </div>
+  
+  
+  </div>
+  
+  <script> console.log("Profile page")</script>
+</body>
+</html>
